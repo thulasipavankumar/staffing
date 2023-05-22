@@ -1,5 +1,6 @@
 package com.expleo.service;
 
+import com.expleo.NotImplementedException;
 import com.expleo.model.Report;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,13 @@ public class ReportService {
         return reports;
     }
     public Report getReport(long id){
-        return  null;
+        throw new NotImplementedException();
     }
     public Report createRecord(Report report){
-        return  null;
+        throw new NotImplementedException();
     }
     public Report updateRecord(long id, Report report){
-        return  null;
+        throw new NotImplementedException();
     }
 
 

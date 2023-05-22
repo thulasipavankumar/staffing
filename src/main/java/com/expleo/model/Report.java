@@ -1,6 +1,7 @@
 package com.expleo.model;
 
 import com.expleo.constants.JobTitle;
+import com.expleo.constants.Status;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ public class Report {
     private long cvSentN,itvNL;
     private long starts;
     private String comments;
+    private Status status;
     @Override
     public String toString(){
         return "StatusReport{} ";

@@ -10,8 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @ExtendWith(SpringExtension.class)
@@ -29,7 +28,7 @@ public class ReportControllerTest {
     }
     @Test
     @DisplayName("validate creating a new record ")
-    void updateRecord()  throws Exception{
+    void createRecord()  throws Exception{
         Report report = new Report();
         String json = ObjectToJson(report);
         mockMvc.perform(post("/api/v1/statusreport")
@@ -43,6 +42,16 @@ public class ReportControllerTest {
         mockMvc.perform(get("/api/v1/statusreport/"+1))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(jsonPath("$").isArray());
+    }
+    @Test
+    @DisplayName("validate status report of talent management is array ")
+    void updateRecord() throws Exception {
+        Report report = new Report();
+        String json = ObjectToJson(report);
+        mockMvc.perform(put("/api/v1/statusreport/"+1)
+                .contentType("application/json")
+                .content(json))
+                .andExpect(status().isOk());
     }
 
     private String ObjectToJson(Object toConvert){
