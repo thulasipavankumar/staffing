@@ -38,8 +38,21 @@ public class JobRequirementService {
         jobRequirementRepository.insert(requirement);
         return jobRequirementRepository.findItemByJobId(requirement.getJobId());
     }
-    public JobRequirement updateRecord(long id, Report report){
-        throw new NotImplementedException();
+    public JobRequirement updateRecord(String jobId,JobRequirement jobRequirement ){
+        Optional<JobRequirement> optional = jobRequirementRepository.findById(jobId);
+        if(optional.isPresent()){
+            JobRequirement givenJobRequirement = optional.get();
+            givenJobRequirement.setJobTitle(jobRequirement.getJobTitle());
+            givenJobRequirement.setStatusList(jobRequirement.getStatusList());
+            givenJobRequirement.setComments(jobRequirement.getComments());
+            givenJobRequirement.setCvSentDate(jobRequirement.getCvSentDate());
+            givenJobRequirement.setItvDate(jobRequirement.getItvDate());
+            final JobRequirement updatedJobRequirement = jobRequirementRepository.save(givenJobRequirement);
+            return updatedJobRequirement;
+        }else{
+            System.out.println("Provided job id is not available");
+            throw new NotSuchRecordFoundException("Provided job id is not available");
+        }
     }
 
 

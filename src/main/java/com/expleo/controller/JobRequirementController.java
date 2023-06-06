@@ -36,7 +36,7 @@ public class JobRequirementController {
     @PutMapping("/statusreport/{id}")
     @ApiOperation(value = "Update a record")
     @PermitAll
-    public JobRequirement updateRecord(@PathVariable("id") Long id, @RequestBody Report report) {
-        return jobRequirementService.updateRecord(id, report);
+    public JobRequirement updateRecord(@PathVariable("id") String jobId, @RequestBody JobRequirement jobRequirement) {
+        return jobRequirementService.updateRecord(jobId, jobRequirement);
     }
 }

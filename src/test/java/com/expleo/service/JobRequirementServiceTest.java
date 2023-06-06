@@ -1,4 +1,5 @@
 package com.expleo.service;
+import com.expleo.model.JobRequirement;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,15 @@ public class JobRequirementServiceTest {
     @DisplayName("validate reports are not null")
     void getAllBooksTest()  {
         assertTrue(jobRequirementService.getAllReports().size()>0);
+    }
+
+    @Test
+    @DisplayName("validate create record")
+    void createJobRequirementTest()  {
+        JobRequirement requirement = new JobRequirement();
+        requirement.setJobId("J001");
+        assertTrue(jobRequirementService.getAllReports().size()>0);
+        assertEquals(jobRequirementService.createRecord(requirement).getJobId(),requirement.getJobId());
     }
 
 }
