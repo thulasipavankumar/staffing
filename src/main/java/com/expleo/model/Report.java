@@ -4,16 +4,17 @@ import com.expleo.constants.JobTitle;
 import com.expleo.constants.Status;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
 
 @Setter
 @Getter
 public class Report {
-    private long requestNumber;
-    private JobTitle jobTitle;
-    private String tribe, squad;
-    private String chapterLead;
+
+    @DBRef
+    private JobRequirement jobRequirement;
+
     private Date recievedOn,cvSentDate,itvDate;
     private long cvSentN,itvNL;
     private long starts;

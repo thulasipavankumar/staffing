@@ -7,22 +7,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-import java.util.HashSet;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ReportServiceTest {
-    ReportService reportService;
+public class JobRequirementServiceTest {
+    JobRequirementService jobRequirementService;
     @BeforeEach
     public void init() {
-        reportService = new ReportService();
+        jobRequirementService = new JobRequirementService();
     }
     @Test
     @DisplayName("validate reports are not null")
     void getAllBooksTest()  {
-        assertTrue(reportService.getAllReports().size()>0);
+        assertTrue(jobRequirementService.getAllReports().size()>0);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.expleo;
+package com.expleo.exception;
 
 public class NotImplementedException extends  RuntimeException{
     public NotImplementedException(){
