@@ -23,3 +23,9 @@ jobs:
           name: Maven Tests
           path: target/surefire-reports/*.xml
           reporter: java-junit
+      - name: Generate jar
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: jar-file
+          path: target/staffing-*.jar
