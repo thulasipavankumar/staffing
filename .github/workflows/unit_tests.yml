@@ -14,8 +14,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn clean compile package -DSkipTests
+        run: mvn clean compile package -DskipTests
       - name: run unit tests
+        if: success() || failure()
         run: mvn test
       - name: Report
         uses: phoenix-actions/test-reporting@v8
