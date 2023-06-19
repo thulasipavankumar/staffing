@@ -14,7 +14,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
-        run: mvn clean compile package
+        run: mvn clean compile package -DskipTests
+      - name: run unit tests
+        if: success() || failure()
+        run: mvn test
       - name: Report
         uses: phoenix-actions/test-reporting@v8
         id: test-report
@@ -23,3 +26,9 @@ jobs:
           name: Maven Tests
           path: target/surefire-reports/*.xml
           reporter: java-junit
+      - name: Generate jar
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: jar-file
+          path: target/staffing-*.jar
